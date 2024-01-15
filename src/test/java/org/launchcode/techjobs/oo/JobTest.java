@@ -68,10 +68,15 @@ public class JobTest {
 
     @Test
     public void testToStringHandlesEmptyField(){
-        Job test8 = new Job("Web Developer",new Employer(), new Location("St Louis"), new PositionType("Full Time"), new CoreCompetency("Java"));
+        Job test8 = new Job("Web Developer",new Employer(""), new Location("St Louis"), new PositionType("Full Time"), new CoreCompetency("Java"));
         String print = test8.toString();
         assertTrue(print.contains("Employer: Data not available"));
     }
 
-
+    @Test
+    public void testToStringHandlesOptionalAllBlanks() {
+        Job test9 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        String print = test9.toString();
+        assertEquals("OOPS! This job does not seem to exist.", print);
+    }
 }
