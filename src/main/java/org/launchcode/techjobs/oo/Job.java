@@ -32,6 +32,23 @@ public class Job {
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+
+    @Override
+    public String toString(){
+        String newline = System.lineSeparator();
+        if ((this.getName()==null) && (this.getEmployer().getValue()==null) && (this.getLocation().getValue()==null) && (this.getPositionType().getValue()==null) && (this.getCoreCompetency().getValue()==null)){
+          return "OOPS! This job does not seem to exist.";
+        } else {
+            return newline +
+                    "ID: " + this.id + newline +
+                    "Name: " + (this.name == "" || this.name == null ? "Data not available" : this.name) + newline +
+                    "Employer: " + (this.getEmployer().getValue() == "" || this.getEmployer().getValue() == null ? "Data not available" : this.getEmployer().getValue()) + newline +
+                    "Location: " + (this.getLocation().getValue() == "" || this.getLocation().getValue() == null ? "Data not available" : this.getLocation().getValue()) + newline +
+                    "Position Type: " + (this.getPositionType().getValue() == "" || this.getPositionType().getValue() == null ? "Data not available" : this.getPositionType().getValue()) + newline +
+                    "Core Competency: " + (this.getCoreCompetency().getValue() == "" || this.getCoreCompetency().getValue() == null ? "Data not available" : this.getCoreCompetency().getValue()) +
+                    newline;
+        }
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
