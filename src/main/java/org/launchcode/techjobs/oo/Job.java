@@ -1,10 +1,10 @@
 package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
-
+import static java.lang.System.lineSeparator;
 public class Job {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
 
     private String name;
@@ -23,6 +23,7 @@ public class Job {
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+        this();
         this.name = name;
         this.employer = employer;
         this.location = location;
@@ -35,33 +36,63 @@ public class Job {
 
     @Override
     public String toString(){
-        String newline = System.lineSeparator();
-      //  if ((this.getName()==null) && (this.getEmployer().getValue()==null) && (this.getLocation().getValue()==null) && (this.getPositionType().getValue()==null) && (this.getCoreCompetency().getValue()==null)){
-        if ((this.getName().isEmpty()) && (this.getEmployer().getValue().isEmpty()) && (this.getLocation().getValue().isEmpty()) && (this.getPositionType().getValue().isEmpty()) && (this.getCoreCompetency().getValue().isEmpty())){
-          return "OOPS! This job does not seem to exist.";
-        }
-         return newline +
-                    "ID: " + this.id + newline +
-                    "Name: " + (this.name == "" || this.name == null ? "Data not available" : this.name) + newline +
-                    "Employer: " + (this.getEmployer().getValue() == "" || this.getEmployer().getValue() == null ? "Data not available" : this.getEmployer().getValue()) + newline +
-                    "Location: " + (this.getLocation().getValue() == "" || this.getLocation().getValue() == null ? "Data not available" : this.getLocation().getValue()) + newline +
-                    "Position Type: " + (this.getPositionType().getValue() == "" || this.getPositionType().getValue() == null ? "Data not available" : this.getPositionType().getValue()) + newline +
-                    "Core Competency: " + (this.getCoreCompetency().getValue() == "" || this.getCoreCompetency().getValue() == null ? "Data not available" : this.getCoreCompetency().getValue()) +
-                    newline;
 
+//        if(name.equals("")){
+//            name =  "Data not available";
+//        }
+//        if(employer.getValue().equals("")){
+//            employer = new Employer("Data not available") ;
+//        }
+//        if(location.getValue().equals("")){
+//            location = new Location("Data not available");
+//        }
+//        if(positionType.getValue().equals("")){
+//            positionType =  new PositionType("Data not available");
+//        }
+//        if(coreCompetency.getValue().equals("")){
+//            coreCompetency =  new CoreCompetency("Data not available");
+//        }
+//
+//        return "\nID: " + id +
+//                "\nName: " + name +
+//                "\nEmployer: " + employer +
+//                "\nLocation: " + location +
+//                "\nPosition Type: " + positionType +
+//                "\nCore Competency: " + coreCompetency +
+//                "\n";
+        String newLine = "\n";
+//
+        if ((this.getName().isEmpty()) && (this.getEmployer().getValue().isEmpty()) && (this.getLocation().getValue().isEmpty()) && (this.getPositionType().getValue().isEmpty()) && (this.getCoreCompetency().getValue().isEmpty())){
+            return "OOPS! This job does not seem to exist.";
+        } else {
+            return newLine +
+                    "ID: " + this.id + newLine +
+                    "Name: " + (this.name == "" || this.name == null ? "Data not available" : this.name) + newLine +
+                    "Employer: " + (this.getEmployer().getValue() == "" || this.getEmployer().getValue() == null ? "Data not available" : this.getEmployer().getValue()) + newLine +
+                    "Location: " + (this.getLocation().getValue() == "" || this.getLocation().getValue() == null ? "Data not available" : this.getLocation().getValue()) + newLine +
+                    "Position Type: " + (this.getPositionType().getValue() == "" || this.getPositionType().getValue() == null ? "Data not available" : this.getPositionType().getValue()) + newLine +
+                    "Core Competency: " + (this.getCoreCompetency().getValue() == "" || this.getCoreCompetency().getValue() == null ? "Data not available" : this.getCoreCompetency().getValue()) +
+                    newLine;
+        }
     }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o== null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return getId() == job.getId();
-
+//        return id == job.id &&
+//                name.equals(job.name) &&
+//                employer.equals(job.employer) &&
+//                location.equals(job.location) &&
+//                positionType.equals(job.positionType) &&
+//                coreCompetency.equals(job.coreCompetency);
+        return getId() == job.getId() &&
+                getName() == job.getName();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.

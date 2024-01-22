@@ -1,11 +1,16 @@
 package org.launchcode.techjobs.oo;
 import java.util.Objects;
+
+// Create Abstract class for common fields in Employer.java, Location.java, CoreCometency.java and PostionType.java
+// id
+//nextId
+//value
 public abstract class JobField {
-    private int id;
+    private final int id;
     private static int nextId = 1;
     private String value;
     public JobField() {
-        this.id = nextId;
+        id = nextId;
         nextId++;
     }
     public JobField(String value) {
@@ -21,7 +26,8 @@ public abstract class JobField {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         JobField jobField = (JobField) o;
-        return getId() == jobField.getId();
+   //     return getId() == jobField.getId();
+        return id == jobField.id;
     }
     @Override
     public int hashCode() {
@@ -33,7 +39,8 @@ public abstract class JobField {
     public String getValue() {
         return value;
     }
-    public void setValue(String value) {
+    public void setValue(String value)
+    {
         this.value = value;
     }
 }
